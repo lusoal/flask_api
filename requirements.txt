@@ -1,0 +1,10 @@
+Click==7.0
+Flask==1.0.2
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.0
+mysqlclient==1.3.14
+pyaml==18.11.0
+PyYAML==3.13
+SQLAlchemy==1.2.15
+Werkzeug==0.14.1
