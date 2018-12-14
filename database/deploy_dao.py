@@ -21,10 +21,10 @@ class DeployDao():
             try:
                 result_proxy = session.execute(query)
                 session.commit()
-                return {'Response': True}
+                return True
             except Exception as e:
                 print (e)
-                return {'Response': False}
+                return False
     
     def select_all(self):
         conn = MysqlConnection(host=self.configs['database']['host'], user=self.configs['database']['user'], password=self.configs['database']['pass'], db=self.configs['database']['schema'])
@@ -37,5 +37,17 @@ class DeployDao():
                 return result
             except Exception as e:
                 print (e)
-                return {'Response' : False}
-        
+                return False
+    
+    def select_some_deploy(self, coluna, valor):
+        conn = MysqlConnection(host=self.configs['database']['host'], user=self.configs['database']['user'], password=self.configs['database']['pass'], db=self.configs['database']['schema'])
+        session = conn.connect_mysql()
+        query = "SELECT * from teste_deploy WHERE {} LIKE {}".format(coluna, valor)
+        if session:
+            try:
+                result_proxy = session.execute(query)
+                result = result_proxy.fetchall()
+                return result
+            except Exception as e:
+                print (e)
+                return False

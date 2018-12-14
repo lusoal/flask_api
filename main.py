@@ -10,18 +10,28 @@ def index():
     return "My API"
 
 
-@app.route('/cadastrar_deploy', methods=['POST'])
+@app.route('/deploy', methods=['POST', 'GET'])
 def save_to_db():
-    content = request.get_json()
-    if len(content) == 4:
-        model = Deploy(content.get('componente'), content.get('versao'), content.get('responsavel'), content.get('status'))
-        controller = DeployController()
-        return jsonify(controller.insert_deploy(model))
-
-@app.route('/consultar_deploys', methods=['GET'])
-def consult_deploys():
     controller = DeployController()
-    return jsonify(controller.select_all_deploys())
+    if request.method == 'POST':
+        content = request.get_json()
+        model = Deploy(content.get('componente'), content.get('versao'), content.get('responsavel'), content.get('status'))
+        return jsonify({'Response':controller.insert_deploy(model)})
+    else:
+        return jsonify({'Response':controller.select_all_deploys()})
+
+@app.route('/consultar_deploy', methods=['GET'])
+def consult_deploy():
+    coluna = request.args.get('coluna')
+    valor = request.args.get('valor')
+    try:
+        valor = int(valor)
+    except:
+        print('Not an int')
+        valor = "'{}'".format(valor)
+    
+    controller = DeployController()
+    return jsonify({'Response':controller.select_some_deploy(coluna, valor)})
     
 if __name__ == '__main__':
     app.run(debug=True)
