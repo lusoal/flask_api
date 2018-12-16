@@ -10,6 +10,7 @@ __pycache__/
 
 #config
 config.yml
+chavesk8s/
 
 # C extensions
 *.so
