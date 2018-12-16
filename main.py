@@ -34,4 +34,5 @@ def consult_deploy():
     return jsonify({'Response':controller.select_some_deploy(coluna, valor)})
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    #Host resposavel para servir o trafego alem do localhost
+    app.run(debug=True, host='0.0.0.0')
