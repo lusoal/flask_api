@@ -32,6 +32,10 @@ def consult_deploy():
     
     controller = DeployController()
     return jsonify({'Response':controller.select_some_deploy(coluna, valor)})
+
+@app.route('/health', methods=['GET'])
+def healthcheck():
+    return jsonify({'Response':True})
     
 if __name__ == '__main__':
     #Host resposavel para servir o trafego alem do localhost
