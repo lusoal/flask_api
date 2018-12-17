@@ -13,9 +13,8 @@ class TestClass(object):
 
     def test_error_connecting(self):
         #Erro na conexao com o Mysql
-        conn = MysqlConnection('teste', 'teste', 'teste', 'teste')
-        session = conn.connect_mysql()
-        query = "SELECT * FROM teste_deploy"
-        
         with pytest.raises(Exception):
+            conn = MysqlConnection('teste', 'teste', 'teste', 'teste')
+            session = conn.connect_mysql()
+            query = "SELECT * FROM teste_deploy"
             session.execute(query)
