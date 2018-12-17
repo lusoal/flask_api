@@ -11,6 +11,7 @@ __pycache__/
 #config
 config.yml
 chavesk8s/
+envs.sh
 
 # C extensions
 *.so

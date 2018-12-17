@@ -1,16 +1,14 @@
 import yaml
+import os
 
 from model.model_deploy import Deploy
 from connection.mysql_conn import MysqlConnection
 
 class DeployDao():
 
-    def __init__(self):
-        self.configs = yaml.load(open('config.yml'))
-
     def inserir_registro(self, model_deploy):
         print(model_deploy.versao)
-        conn = MysqlConnection(host=self.configs['database']['host'], user=self.configs['database']['user'], password=self.configs['database']['pass'], db=self.configs['database']['schema'])
+        conn = MysqlConnection(host=os.getenv('DB_HOST', 'host_db'), user=os.getenv('DB_USER', 'user_db'), password=os.getenv('DB_PASS', 'pass_db'), db=os.getenv('DB_SCHEMA', 'schema_db'))
         session = conn.connect_mysql()
         print (session)
         if session:
@@ -27,7 +25,7 @@ class DeployDao():
                 return False
     
     def select_all(self):
-        conn = MysqlConnection(host=self.configs['database']['host'], user=self.configs['database']['user'], password=self.configs['database']['pass'], db=self.configs['database']['schema'])
+        conn = MysqlConnection(host=os.getenv('DB_HOST', 'host_db'), user=os.getenv('DB_USER', 'user_db'), password=os.getenv('DB_PASS', 'pass_db'), db=os.getenv('DB_SCHEMA', 'schema_db'))
         session = conn.connect_mysql()
         query = "SELECT * FROM teste_deploy"
         if session:
@@ -40,7 +38,7 @@ class DeployDao():
                 return False
     
     def select_some_deploy(self, coluna, valor):
-        conn = MysqlConnection(host=self.configs['database']['host'], user=self.configs['database']['user'], password=self.configs['database']['pass'], db=self.configs['database']['schema'])
+        conn = MysqlConnection(host=os.getenv('DB_HOST', 'host_db'), user=os.getenv('DB_USER', 'user_db'), password=os.getenv('DB_PASS', 'pass_db'), db=os.getenv('DB_SCHEMA', 'schema_db'))
         session = conn.connect_mysql()
         query = "SELECT * from teste_deploy WHERE {} LIKE {}".format(coluna, valor)
         if session:
