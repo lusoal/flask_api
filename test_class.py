@@ -10,11 +10,3 @@ class TestClass(object):
         #Teste para verificar se o resultado esperado e um dicionario de valores
         print (result[0]['Status'])
         assert result[0]['Status'] == True
-
-    def test_error_connecting(self):
-        #Erro na conexao com o Mysql
-        with pytest.raises(Exception):
-            conn = MysqlConnection('teste', 'teste', 'teste', 'teste')
-            session = conn.connect_mysql()
-            query = "SELECT * FROM teste_deploy"
-            session.execute(query)
