@@ -3,20 +3,13 @@ from flask_jwt import JWT, jwt_required, current_identity
 from werkzeug.security import safe_str_cmp
 
 from model.model_deploy import Deploy
+from model.model_user import User
 from controller.deploy_controller import DeployController
 
-class User(object):
-    def __init__(self, id, username, password):
-        self.id = id
-        self.username = username
-        self.password = password
 
-    def __str__(self):
-        return "User(id='%s')" % self.id
-
+#Exemplo de usuario, poderia pegar o usuario do banco de dados utilizando a camada DAO
 users = [
-    User(1, 'user1', 'abcxyz'),
-    User(2, 'user2', 'abcxyz'),
+    User(1, 'devops', 'teste123')
 ]
 
 username_table = {u.username: u for u in users}
@@ -32,9 +25,7 @@ def identity(payload):
     return userid_table.get(user_id, None)
 
 app = Flask(__name__)
-app.debug = True
-app.config['SECRET_KEY'] = 'super-secret'
-
+app.config['SECRET_KEY'] = 'devops'
 jwt = JWT(app, authenticate, identity)
 
 
