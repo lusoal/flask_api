@@ -49,4 +49,21 @@ class DeployController():
             return list_of_values
         else:
             return False
+    
+    def mock_deploy_test(self):
+        list_of_values = []
+        result = [[00, 'Testing', 'Teste', 'Pytest', True, '02-10-1997']]
+        if result:
+            for values in result:
+                dict_return = {'ID': None, 'Componente': None, 'Versao': None, 'Responsavel': None, 'Status': None, 'Data': None}
+                dict_return['ID'] = values[0]
+                dict_return['Componente'] = values[1]
+                dict_return['Versao'] = values[2]
+                dict_return['Responsavel'] = values[3]
+                dict_return['Status'] = values[4]
+                dict_return['Data'] = values[5]
+                list_of_values.append(dict_return)
+            return list_of_values
+        else:
+            return False
         
