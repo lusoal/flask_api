@@ -1,5 +1,5 @@
 from controller.deploy_controller import DeployController
-from connection.mysql_conn import MysqlConnection
+from controller.deploy_controller import DeployController
 import pytest
 
 class TestClass(object):
