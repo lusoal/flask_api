@@ -34,8 +34,8 @@ def index():
     return "My API"
 
 
-@app.route('/deploy', methods=['POST', 'GET'])
-@jwt_required()
+@app.route('/deploys', methods=['POST', 'GET'])
+#@jwt_required()
 def save_to_db():
     controller = DeployController()
     if request.method == 'POST':
@@ -43,14 +43,27 @@ def save_to_db():
         model = Deploy(content.get('componente'), content.get('versao'), content.get('responsavel'), content.get('status'))
         return jsonify({'Response':controller.insert_deploy(model)})
     else:
-        return jsonify({'Response':controller.select_all_deploys()})
+        qtd = request.args.get('qtd')
+        coluna = request.args.get('coluna')
+        valor = request.args.get('valor')
+        if coluna:
+            try:
+                valor = int(valor)
+            except:
+                print('Not an int')
+                valor = "'{}'".format(valor)
+            return jsonify({'Response':controller.select_some_deploy(coluna, valor)})
+        else:
+            return jsonify({'Response':controller.select_all_deploys(qtd)})
+        
 
 
-@app.route('/consultar_deploy', methods=['GET'])
-@jwt_required()
-def consult_deploy():
-    coluna = request.args.get('coluna')
-    valor = request.args.get('valor')
+@app.route('/deploys/<id>', methods=['GET'])
+#@jwt_required()
+def consult_deploy(id):
+    #coluna = request.args.get('coluna')
+    coluna = 'id'
+    valor = id
     try:
         valor = int(valor)
     except:

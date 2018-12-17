@@ -15,8 +15,8 @@ class DeployController():
             print ('Parametros passados no POST sao invalidos')
             return False
     
-    def select_all_deploys(self):
-        result = self.dao.select_all()
+    def select_all_deploys(self, qtd=None):
+        result = self.dao.select_all(qtd)
         list_of_values = []
         if result:
             for values in result:

@@ -24,10 +24,14 @@ class DeployDao():
                 print (e)
                 return False
     
-    def select_all(self):
+    def select_all(self, limite=None):
         conn = MysqlConnection(host=os.getenv('DB_HOST', 'host_db'), user=os.getenv('DB_USER', 'user_db'), password=os.getenv('DB_PASS', 'pass_db'), db=os.getenv('DB_SCHEMA', 'schema_db'))
         session = conn.connect_mysql()
-        query = "SELECT * FROM teste_deploy"
+        if limite:
+            query = "SELECT * FROM teste_deploy ORDER BY id LIMIT {}".format(int(limite))
+        else:
+            query = "SELECT * FROM teste_deploy"
+
         if session:
             try:
                 result_proxy = session.execute(query)
