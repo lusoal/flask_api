@@ -2,20 +2,12 @@
     - [Getting Started](#getting-started)
         - [Prerequisites](#prerequisites)
         - [Installing](#installing)
-    - [Running the tests](#running-the-tests)
-        - [Break down into end to end tests](#break-down-into-end-to-end-tests)
-        - [And coding style tests](#and-coding-style-tests)
-    - [Deployment](#deployment)
     - [Built With](#built-with)
-    - [Contributing](#contributing)
-    - [Versioning](#versioning)
     - [Authors](#authors)
-    - [License](#license)
-    - [Acknowledgments](#acknowledgments)
   
 # Flask Api for Deployments
 
-A Flask API Rest to save the deployments logs of events.
+A Flask API Rest to save the deployments logs of events, if you want a way to save your deployment log status, you find it !
 
 ## Getting Started
 
@@ -29,77 +21,60 @@ The prerequisites you will need to up and running this application
 
 Python 3.* (https://www.python.org/downloads/)
 Docker (https://www.docker.com/get-started)
+MySQL Client (https://dev.mysql.com/doc/mysql-getting-started/en/)
+MySQL Databse
 
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+In this example we are going to run this application inside a Docker container, but you can run without container in the same way at your machine
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Change configuration File with your Database Credentials
 
 ```
-until finished
+mv config.yml.sample config.yml
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Run the migrate.sh to create the database structure
 
 ```
-Give an example
+./migrate.sh
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+Open the config.yml and fill the information
 
 ```
-Give an example
+database:
+  host: the endpoint of your database
+  user: user of your database
+  pass: pass of your database
+  schema: deploy_db (If you had run the ./migrate.sh the patter will be deploy_db)
 ```
 
-## Deployment
+Create the Docker image with the application
 
-Add additional notes about how to deploy this on a live system
+```
+docker build -t myflaskapp:latest .
+```
+
+Run the container exposing the port of the applciation
+
+```
+docker run -i -d -p 5000:5000 myflaskapp:latest
+```
+
+Access the application from your Browser to see how it works
+
+```
+http://localhost:5000/help
+```
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* [Flask](http://flask.pocoo.org/docs/1.0/quickstart/) - A Python Microframework
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Lucas Duarte** - *Initial work* - [lusoal](https://github.com/lusoal)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
