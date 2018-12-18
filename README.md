@@ -40,6 +40,12 @@ DB_SCHEMA: deploy_db (Schema name)
 APP_USER: teste (User to get the token from the api)
 APP_PASS: 123456 (Password for the user to get the token)
 ```
+
+Access the application from your Browser to see how it works
+
+```
+http://localhost:5000/api/help
+```
 ---
 ### Build with Docker only (Application only)
 
