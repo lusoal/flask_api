@@ -28,7 +28,7 @@ configs = yaml.load(open('config.yml'))
 def login():
     """
     POST: Retorna o token para realizar as chamadas e verificar os deploys
-    Exemplo: curl -XPOST https://deployment-api.lucasduarte.club/api/auth -H 'content-type: application/json' --data '{"username":"your_user", "password":"your_pass"}' 
+    Exemplo: curl -XPOST http://apiurl:port/api/auth -H 'content-type: application/json' --data '{"username":"your_user", "password":"your_pass"}' 
     """
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
@@ -51,10 +51,10 @@ def login():
 def save_to_db():
     """
     GET: Retorna os deploys cadastrados na base de dados. 
-    Exemplo: curl -XGET https://deployment-api.lucasduarte.club/api/deploys  -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token'
+    Exemplo: curl -XGET http://apiurl:port/api/deploys  -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token'
 
     POST: Cadastra novo log de deploy na base de dados
-    Exemplo: curl -XPOST https://deployment-api.lucasduarte.club/api/deploys -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token' --data '{"componente":"teste", "versao":"01","responsavel":"teste","status":"In Progress"}' 
+    Exemplo: curl -XPOST http://apiurl:port/api/deploys -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token' --data '{"componente":"teste", "versao":"01","responsavel":"teste","status":"In Progress"}' 
     """
     controller = DeployController()
     if request.method == 'POST':
@@ -84,7 +84,7 @@ def consult_deploy(id):
     """
 
     GET: Retorna os deploys cadastrados na base de dados. 
-    Exemplo: curl -XGET https://deployment-api.lucasduarte.club/api/deploys/20  -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token'
+    Exemplo: curl -XGET http://apiurl:port/api/deploys/20  -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token'
     
     """
     coluna = 'id'
