@@ -19,6 +19,8 @@ services:
       ports:
         - "5000:5000"
       restart: always
+      volumes:
+        - ./:/app
       environment:
         DB_HOST: mysql:3306
         DB_USER: root
