@@ -30,12 +30,6 @@ MySQL Databse
 
 In this example we are going to run this application inside a Docker container, but you can run without container in the same way at your machine
 
-Change configuration File with your Database Credentials
-
-```
-mv config.yml.sample config.yml
-```
-
 Run the migrate.sh to create the database structure
 
 ```
@@ -50,9 +44,9 @@ database:
   user: user of your database
   pass: pass of your database
   schema: deploy_db (If you had run the ./migrate.sh the patter will be deploy_db)
-  user:
-    username: A user to make the requests
-    password: password for the user
+user:
+  username: A user to generate token
+  password: password for the user
 ```
 
 Create the Docker image with the application
