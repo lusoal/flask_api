@@ -24,5 +24,5 @@ services:
         DB_USER: root
         DB_PASS: admin
         DB_SCHEMA: deploy_db
-        APP_USER: lucas
-        APP_PASS: duarte
+        APP_USER: teste
+        APP_PASS: 123456

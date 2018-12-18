@@ -1,8 +1,9 @@
 - [Flask Api for Deployments](#flask-api-for-deployments)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
-    - [Installing](#installing)
-  - [Demonstration](#demonstration)
+    - [Build with Docker Compose (All the environment)](#build-with-docker-compose-all-the-environment)
+    - [Build with Docker only (Application only)](#build-with-docker-only-application-only)
+    - [Demonstration](#demonstration)
   - [Built With](#built-with)
   - [Authors](#authors)
   
@@ -19,15 +20,28 @@ These instructions will get you a copy of the project up and running on your loc
 The prerequisites you will need to up and running this application
 
 ```
-
-Python 3.* (https://www.python.org/downloads/)
 Docker (https://www.docker.com/get-started)
-MySQL Client (https://dev.mysql.com/doc/mysql-getting-started/en/)
-MySQL Databse
-
+Docker Compose (https://docs.docker.com/compose/install/)
 ```
 
-### Installing
+### Build with Docker Compose (All the environment)
+---
+
+```
+docker-compose up
+```
+If you want to change de information to access the api just change de environment variables inside the compose.
+
+```
+DB_HOST: mysql:3306 (Host of Database)
+DB_USER: root (User to access the information)
+DB_PASS: admin (Pass to access DB)
+DB_SCHEMA: deploy_db (Schema name)
+APP_USER: teste (User to get the token from the api)
+APP_PASS: 123456 (Password for the user to get the token)
+```
+---
+### Build with Docker only (Application only)
 
 In this example we are going to run this application inside a Docker container, but you can run without container in the same way at your machine
 
@@ -67,7 +81,9 @@ Access the application from your Browser to see how it works
 ```
 http://localhost:5000/api/help
 ```
-## Demonstration
+
+
+### Demonstration
 
 [![Deploy](http://img.youtube.com/vi/inmcXoVbZYE/0.jpg)](http://www.youtube.com/watch?v=inmcXoVbZYE "Deploy Application")
 
