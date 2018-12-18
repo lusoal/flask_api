@@ -50,7 +50,7 @@ def login():
 @jwt_required
 def save_to_db():
     """
-    GET: Retorna os deploys cadastrados na base de dados. 
+    GET: Retorna os deploys que foram cadastrados na base de dados. 
     Exemplo: curl -XGET http://apiurl:port/api/deploys  -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token'
 
     POST: Cadastra novo log de deploy na base de dados
