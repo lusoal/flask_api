@@ -51,10 +51,10 @@ def login():
 def save_to_db():
     """
     GET: Retorna os deploys cadastrados na base de dados. 
-    Exemplo: curl -XGET https://deployment-api.lucasduarte.club/deploys  -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token'
+    Exemplo: curl -XGET https://deployment-api.lucasduarte.club/api/deploys  -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token'
 
     POST: Cadastra novo log de deploy na base de dados
-    Exemplo: curl -XPOST https://deployment-api.lucasduarte.club/deploys -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token' --data '{"componente":"teste", "versao":"01","responsavel":"teste","status":"In Progress"}' 
+    Exemplo: curl -XPOST https://deployment-api.lucasduarte.club/api/deploys -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token' --data '{"componente":"teste", "versao":"01","responsavel":"teste","status":"In Progress"}' 
     """
     controller = DeployController()
     if request.method == 'POST':
@@ -84,7 +84,7 @@ def consult_deploy(id):
     """
 
     GET: Retorna os deploys cadastrados na base de dados. 
-    Exemplo: curl -XGET https://deployment-api.lucasduarte.club/deploys/20  -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token'
+    Exemplo: curl -XGET https://deployment-api.lucasduarte.club/api/deploys/20  -H 'content-type: application/json' -H 'Authorization: Bearer autorization-token'
     
     """
     coluna = 'id'
