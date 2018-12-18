@@ -70,7 +70,7 @@ docker run -i -d -p 5000:5000 myflaskapp:latest
 Access the application from your Browser to see how it works
 
 ```
-http://localhost:5000/help
+http://localhost:5000/api/help
 ```
 
 ## Built With
