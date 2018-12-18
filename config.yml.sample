@@ -3,3 +3,6 @@ database:
   user: 
   pass: 
   schema:
+user:
+  username:
+  password:

@@ -1,3 +1,5 @@
+import os
+import yaml
 from flask import Flask, jsonify, request
 from flask_jwt import JWT, jwt_required, current_identity
 from werkzeug.security import safe_str_cmp
@@ -6,10 +8,11 @@ from model.model_deploy import Deploy
 from model.model_user import User
 from controller.deploy_controller import DeployController
 
+#Exemplo de usuario, poderia pegar o usuario do banco de dados utilizando a camada DAO, esta utilizando de um arquivo Yaml ou de variavel de ambiente
+configs = yaml.load(open('config.yml'))
 
-#Exemplo de usuario, poderia pegar o usuario do banco de dados utilizando a camada DAO
 users = [
-    User(1, 'devops', 'teste123')
+    User(1, os.getenv('APP_USER', configs['user']['username']), str(os.getenv('APP_PASS', configs['user']['password'])))
 ]
 
 username_table = {u.username: u for u in users}
@@ -35,7 +38,7 @@ def index():
 
 
 @app.route('/deploys', methods=['POST', 'GET'])
-#@jwt_required()
+@jwt_required()
 def save_to_db():
     controller = DeployController()
     if request.method == 'POST':
@@ -59,7 +62,7 @@ def save_to_db():
 
 
 @app.route('/deploys/<id>', methods=['GET'])
-#@jwt_required()
+@jwt_required()
 def consult_deploy(id):
     #coluna = request.args.get('coluna')
     coluna = 'id'
