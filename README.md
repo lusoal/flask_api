@@ -2,6 +2,7 @@
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installing](#installing)
+  - [Demonstration](#demonstration)
   - [Built With](#built-with)
   - [Authors](#authors)
   
@@ -66,6 +67,9 @@ Access the application from your Browser to see how it works
 ```
 http://localhost:5000/api/help
 ```
+## Demonstration
+
+[![Deploy](http://img.youtube.com/vi/inmcXoVbZYE/0.jpg)](http://www.youtube.com/watch?v=inmcXoVbZYE "Deploy Application")
 
 ## Built With
 
