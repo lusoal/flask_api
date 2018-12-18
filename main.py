@@ -35,7 +35,7 @@ def index():
 
 
 @app.route('/deploys', methods=['POST', 'GET'])
-@jwt_required()
+#@jwt_required()
 def save_to_db():
     controller = DeployController()
     if request.method == 'POST':
@@ -59,7 +59,7 @@ def save_to_db():
 
 
 @app.route('/deploys/<id>', methods=['GET'])
-@jwt_required()
+#@jwt_required()
 def consult_deploy(id):
     #coluna = request.args.get('coluna')
     coluna = 'id'
