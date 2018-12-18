@@ -2,7 +2,7 @@ database:
   host: 
   user: 
   pass: 
-  schema:
+  schema: 
 user:
-  username:
-  password:
+  username: 
+  password: 

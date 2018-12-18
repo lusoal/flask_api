@@ -9,7 +9,6 @@ __pycache__/
 *$py.class
 
 #config
-config.yml
 chavesk8s/
 envs.sh
 
