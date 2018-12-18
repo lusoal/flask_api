@@ -1,9 +1,9 @@
 - [Flask Api for Deployments](#flask-api-for-deployments)
-    - [Getting Started](#getting-started)
-        - [Prerequisites](#prerequisites)
-        - [Installing](#installing)
-    - [Built With](#built-with)
-    - [Authors](#authors)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installing](#installing)
+  - [Built With](#built-with)
+  - [Authors](#authors)
   
 # Flask Api for Deployments
 
@@ -30,7 +30,7 @@ MySQL Databse
 
 In this example we are going to run this application inside a Docker container, but you can run without container in the same way at your machine
 
-Run the migrate.sh to create the database structure
+Run the migrate.sh to create the database structure on your MySQL DB Instance
 
 ```
 ./migrate.sh
